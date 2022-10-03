@@ -1,12 +1,13 @@
 import { Routing } from "features/routing";
 import { withProviders } from "./providers";
 
-import "./styles";
+import "./styles/index.scss";
+import { publicRoutes } from "./lib/routes";
 
 function App() {
   return (
     <div className="App">
-      <Routing routes={[]} />
+      <Routing routes={publicRoutes} />
     </div>
   );
 }

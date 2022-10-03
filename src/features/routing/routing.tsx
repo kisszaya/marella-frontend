@@ -14,7 +14,9 @@ export const Routing = ({ routes }: Props) => {
       {routes.map((route) => (
         <Route key={route.path} element={route.element} path={route.path} />
       ))}
-      {defaultPath && <Route element={<Navigate to={defaultPath} />} />}
+      {defaultPath && (
+        <Route path="*" element={<Navigate to={defaultPath} />} />
+      )}
     </Routes>
   );
 };
