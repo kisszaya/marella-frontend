@@ -2,11 +2,11 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 
 import { AppDispatch } from "app/store";
-import { authActions } from "entities/auth";
+import { authActions, authCaseReducers } from "entities/auth";
 
-const actionCreators = { ...authActions };
+const actionCreators = { ...authActions, ...authCaseReducers };
 
 export const useActions = () => {
   const dispatch = useDispatch<AppDispatch>();
-  return bindActionCreators(actionCreators, dispatch);
+  return { ...bindActionCreators(actionCreators, dispatch) };
 };

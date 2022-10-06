@@ -1,15 +1,23 @@
 import { Routing } from "features/routing";
-import { withProviders } from "./providers";
+
+import { publicRoutes, userRoutes } from "./lib/routes";
+import { AuthVerify, useAuthorization } from "features/authorization";
 
 import "./styles/index.scss";
-import { publicRoutes } from "./lib/routes";
 
 function App() {
-  return (
-    <div className="App">
-      <Routing routes={publicRoutes} />
-    </div>
+  const { isLoading, role } = useAuthorization();
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return role === "UNAUTHORIZED" ? (
+    <Routing routes={publicRoutes} />
+  ) : (
+    <>
+      <Routing routes={userRoutes} />
+      <AuthVerify />
+    </>
   );
 }
 
-export default withProviders(App);
+export default App;

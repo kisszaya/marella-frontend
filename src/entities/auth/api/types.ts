@@ -1,3 +1,5 @@
+type UserRole = "ROLE_USER";
+
 interface LoginRequest {
   email: string;
   password: string;
@@ -14,6 +16,10 @@ interface LoginResponse {
   };
 }
 
-type UserRole = "ROLE_USER";
+interface RefreshResponse {
+  accessToken: string;
+  refreshToken: string;
+  tokenType: "Bearer";
+}
 
-export type { LoginResponse, UserRole, LoginRequest };
+export type { LoginResponse, UserRole, LoginRequest, RefreshResponse };

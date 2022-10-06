@@ -1,2 +1,2 @@
 export { AuthTypes } from "./api";
-export * from "./model";
+export { authActions, authReducer, authCaseReducers } from "./model";
